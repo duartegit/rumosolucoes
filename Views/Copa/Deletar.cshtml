@@ -1,0 +1,46 @@
+﻿@model Copa
+
+<form method="post" asp-action="Deletar">
+    <input asp-for="Id_pedido" hidden />
+    <input asp-for="FK_id_pedido" hidden disabled />
+    <div class="border p-3 mt-4">
+        <div class="row p-b2">
+            <h2 class="text-primary">Liberar Bebida</h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary="All"></div>
+        
+        <div class="mb-3">
+            <label>Nome do Cliente</label>
+            <input  name="Nome"disabled class="form-control" type="text" 
+            value="@if(ViewBag.data.NomeCliente!=null)
+                        {
+                            @ViewBag.data.NomeCliente;
+                        }else if(ViewBag.data.NomeCliente==null){@ViewBag.data.NomeCliente.ToString();}" 
+                        />
+        </div>
+        <div class="mb-3">
+            <label>Bebida</label>
+            <input  disabled class="form-control" type="text" value="@if(ViewBag.data.Bebida!=null)
+                        {
+                            @ViewBag.data.Bebida;
+                        }else if(ViewBag.data.Bebida==null){@ViewBag.data.Bebida.ToString();}" 
+                        />
+        </div>
+        <div class="mb-3">
+            <label>Quantidade</label>
+            <input  disabled class="form-control" type="text" value="@if(ViewBag.data.Quantidade!=null)
+                        {
+                            @ViewBag.data.Quantidade;
+                        }else if(ViewBag.data.Quantidade==null){@ViewBag.data.Quantidade.ToString();}" 
+                        />
+        </div>
+        <button type="submit" class="btn btn-success" style="width:150px">Liberar Bebida</button>
+        <a asp-controller="Copa" asp-action="Index" class="btn btn-primary" style="width:150px">Voltar</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}
+

@@ -1,0 +1,40 @@
+﻿@model Pedido
+
+<form method="post" asp-action="Adicionar">
+    <div class="border p-3 mt-4">
+        <div class="row p-b2">
+            <h2 class="text-primary">Adicionar Pedido</h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="NomeCliente">Nome do Cliente</label>
+            <input asp-for="NomeCliente" class="form-control" type="text" placeholder="Nome do Cliente"/>
+            <span asp-validation-for="NomeCliente" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NomePrato">Nome do Prato</label>
+            <input asp-for="NomePrato" class="form-control" type="text" placeholder="Nome do Prato"/>
+            <span asp-validation-for="NomePrato" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Bebida">Bebida</label>
+            <input asp-for="Bebida" class="form-control" type="text" placeholder="Bebida"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Quantidade">Quantidade</label>
+            <input asp-for="Quantidade" class="form-control" type="text" placeholder="Quantidade de Bebidas"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Mesa">Mesa</label>
+            <input asp-for="Mesa" class="form-control" type="text" placeholder="Número da Mesa"/>
+            <span asp-validation-for="Mesa" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success" style="width:150px">Adicionar</button>
+        <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary" style="width:150px">Voltar</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

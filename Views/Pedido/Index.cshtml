@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Pedido>
+@{
+    ViewData["Title"] = "Lista de Pedidos";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Pedidos</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Pedido" asp-action="Adicionar" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Adicionar Pedido
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped text-center" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Nº do Pedido
+            </th>
+            <th>
+                Nome do Cliente
+            </th>
+            <th>
+                Nome do Prato
+            </th>
+            <th>
+                Bebida
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Mesa
+            </th>
+            <th>
+                Opções
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="5%">
+                    @obj.Id_pedido
+                </td>
+                <td width="20%">
+                    @obj.NomeCliente
+                </td>
+                <td width="20%">
+                    @obj.NomePrato
+                </td>
+                <td width="15%">
+                    @obj.Bebida
+                </td>
+                <td width="10%">
+                    @obj.Quantidade
+                </td>
+                <td width="5%">
+                    @obj.Mesa
+                </td>
+                <td width="25%">
+                    <div class ="w-75 btn-group " role="group" >
+                        <div>
+                        <a asp-controller="Pedido" asp-action="Editar" asp-route-id="@obj.Id_pedido" class="btn btn-primary"> 
+                            <i class="bi bi-pencil-square"></i> &nbsp; Editar
+                        </a> </div>&nbsp; 
+                         <div>
+                        <a asp-controller="Pedido" asp-action="Deletar" asp-route-id="@obj.Id_pedido" class="btn btn-danger"> 
+                            <i class="bi bi-trash-fill"></i> &nbsp; Deletar
+                        </a> </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="container p-3">
+    <div class ="w-25 btn-group " role="group" >
+         <div>
+             <a asp-controller="Home" asp-action="Index" asp-area="" class="btn btn-primary">
+                 <i class="fas fa-home"></i> &nbsp; Home
+                 </a>
+         </div>&nbsp;
+         <div>
+             <a asp-controller="Cozinha" asp-action="Index" asp-area="" class="btn btn-warning">
+                 <i class="fas fa-drumstick-bite  "></i> &nbsp; Cozinha
+             </a>
+        </div>&nbsp;
+         <div>
+             <a asp-controller="Copa" asp-action="Index" asp-area="" class="btn btn-success">
+                 <i class="fas fa-wine-bottle "></i> &nbsp; Copa
+             </a>
+        </div>
+    </div>
+</div>

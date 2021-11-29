@@ -1,0 +1,49 @@
+﻿@model Cozinha
+
+<form method="post" asp-action="Deletar">
+    <input asp-for="Id_pedido" hidden />
+    <input asp-for="FK_id_pedido" hidden disabled />
+    <div class="border p-3 mt-4">
+        <div class="row p-b2">
+            <h2 class="text-primary">Liberar Pedido</h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary="All"></div>
+        
+        <div class="mb-3">
+            <label>Nome do Cliente</label>
+            <input  name="Nome"disabled class="form-control" type="text" 
+            value="@if(ViewBag.data.NomeCliente!=null)
+                        {
+                            @ViewBag.data.NomeCliente;
+                        }else if(ViewBag.data.NomeCliente==null){@ViewBag.data.NomeCliente.ToString();}" 
+                        />
+        </div>
+        <div class="mb-3">
+            <label>Nome do Prato</label>
+            <input  disabled class="form-control" type="text" value="@if(ViewBag.data.NomePrato!=null)
+                        {
+                            @ViewBag.data.NomePrato;
+                        }else if(ViewBag.data.NomePrato==null){@ViewBag.data.NomePrato.ToString();}" 
+                        />
+        </div>
+        <div class="mb-3">
+            <label>Mesa</label>
+            <input  disabled class="form-control" type="text" value="@if(ViewBag.data.Mesa!=null)
+                        {
+                            @ViewBag.data.Mesa;
+                        }else if(ViewBag.data.Mesa==null){@ViewBag.data.Mesa.ToString();}" 
+                        />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Prazo">Prazo</label>
+            <input asp-for="Prazo" disabled class="form-control"  type="datetime" asp-format="{0:dd/MM/yyyy HH:mm}" />
+        </div>
+        <button type="submit" class="btn btn-success" style="width:150px">Liberar Pedido</button>
+        <a asp-controller="Cozinha" asp-action="Index" class="btn btn-primary" style="width:150px">Voltar</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}
