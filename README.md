@@ -37,9 +37,6 @@ $ git clone https://github.com/duartegit/rumosolucoes
 
 ![Executando](https://user-images.githubusercontent.com/50371525/144061289-a61919d2-67a0-4808-a38c-0aa9ce85519f.png)
 
-Esta Aplicação quer tornar o processo da Cozinha e Copa do restaurante mais rapido, e esse sistema capta os pedidos dos cliente de forma eficiente. 
-O benefício de utilizar esse sistema, é que os funcionários da Cozinha e da Copa, poderão ver o Pedido que foi feito na hora.
-
 
 ## Contato
 
