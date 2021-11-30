@@ -16,6 +16,10 @@ namespace test.Controllers
         public IActionResult Index()
         {
             IEnumerable<Pedido> objPedidoList = _db.tbl_pedido.ToList();
+            if (objPedidoList.Count()==0) 
+            {
+                ViewBag.naoexiste = true;
+            }
             return View(objPedidoList);
         }
 

@@ -17,6 +17,10 @@ namespace test.Controllers
         {
             IEnumerable<Pedido> objPedidoList = _db.tbl_pedido.ToList();
             IEnumerable<Cozinha> personlist = _db.tbl_cozinha.ToList();
+            if (personlist.Count() == 0)
+            {
+                ViewBag.naoexiste = true;
+            }
             ViewBag.data = personlist;
             return View(objPedidoList);
         }

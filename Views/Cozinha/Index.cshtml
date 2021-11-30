@@ -9,101 +9,103 @@
         </div>
     </div>
 </div>
-
-<table class="table table-bordered table-striped text-center" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                Nome do Cliente
-            </th>
-            <th>
-                Nome do Prato
-            </th>
-            <th>
-                Mesa
-            </th>
-            <th>
-                Prazo
-            </th>
-            <th>
-                Opções
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var obj in Model)
-        {
-            @foreach (var cozinha in ViewBag.data)
+@if (ViewBag.naoexiste ==null) {
+    <table class="table table-bordered table-striped text-center" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Nome do Cliente
+                </th>
+                <th>
+                    Nome do Prato
+                </th>
+                <th>
+                    Mesa
+                </th>
+                <th>
+                    Prazo
+                </th>
+                <th>
+                    Opções
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model)
             {
-                @if (obj.Id_pedido == cozinha.FK_id_pedido)
+                @foreach (var cozinha in ViewBag.data)
                 {
-                    <tr>
-                        <td width="15%">
-                            @obj.NomeCliente
-                        </td>
-                        <td width="15%">
-                            @obj.NomePrato
-                        </td>
-                        <td width="5%">
-                            @obj.Mesa
-                        </td>
-                        <td width="30%">
-                            @if (cozinha.Prazo != null)
-                            {
-                                <div>
-                                    <scan>Prazo para o pedido Nº @cozinha.Id_pedido : @cozinha.Prazo.ToString("dd/MM/yyyy HH:mm")</scan>
-                                </div>
-                            }else
-                            {
-                                <div>
-                                    <scan>Não há prazo para este pedido ainda!</scan>
-                                </div>
-                            }
-                        </td>
-                        <td width="35%">
-                            @if (cozinha.Prazo != null)
-                            {
-                                <div class ="w-75 btn-group " role="group" >
+                    @if (obj.Id_pedido == cozinha.FK_id_pedido)
+                    {
+                        <tr>
+                            <td width="15%">
+                                @obj.NomeCliente
+                            </td>
+                            <td width="15%">
+                                @obj.NomePrato
+                            </td>
+                            <td width="5%">
+                                @obj.Mesa
+                            </td>
+                            <td width="30%">
+                                @if (cozinha.Prazo != null)
+                                {
                                     <div>
-                                     <a asp-controller="Cozinha" asp-action="Editar" asp-route-id="@obj.Id_pedido" class="btn btn-danger"> 
-                                        <i class="bi bi-pencil-square"></i> &nbsp; Editar Prazo
-                                        </a>
-                                        </div> &nbsp;
+                                        <scan>Prazo para o pedido Nº @cozinha.Id_pedido : @cozinha.Prazo.ToString("dd/MM/yyyy HH:mm")</scan>
+                                    </div>
+                                }else
+                                {
+                                    <div>
+                                        <scan>Não há prazo para este pedido ainda!</scan>
+                                    </div>
+                                }
+                            </td>
+                            <td width="35%">
+                                @if (cozinha.Prazo != null)
+                                {
+                                    <div class ="w-75 btn-group " role="group" >
                                         <div>
-                                     <a asp-controller="Cozinha" asp-action="Deletar" asp-route-id="@obj.Id_pedido" class="btn btn-success"> 
-                                        <i class="bi bi-check-lg"></i> &nbsp; Liberar Pedido
-                                        </a>
-                                        </div>
-                                 </div>
-                            }else
-                            {
-                                <div class ="w-75 btn-group " role="group" >
-                                     <a asp-controller="Cozinha" asp-action="Editar" asp-route-id="@obj.Id_pedido" class="btn btn-primary"> 
-                                        <i class="bi bi-plus-circle"></i> &nbsp; Adicionar Prazo
-                                        </a>
-                                 </div>
-                            }
-                         </td>
-                    </tr>
+                                         <a asp-controller="Cozinha" asp-action="Editar" asp-route-id="@obj.Id_pedido" class="btn btn-danger"> 
+                                            <i class="bi bi-pencil-square"></i> &nbsp; Editar Prazo
+                                            </a>
+                                            </div> &nbsp;
+                                            <div>
+                                         <a asp-controller="Cozinha" asp-action="Deletar" asp-route-id="@obj.Id_pedido" class="btn btn-success"> 
+                                            <i class="bi bi-check-lg"></i> &nbsp; Liberar Pedido
+                                            </a>
+                                            </div>
+                                     </div>
+                                }else
+                                {
+                                    <div class ="w-75 btn-group " role="group" >
+                                         <a asp-controller="Cozinha" asp-action="Editar" asp-route-id="@obj.Id_pedido" class="btn btn-primary"> 
+                                            <i class="bi bi-plus-circle"></i> &nbsp; Adicionar Prazo
+                                            </a>
+                                     </div>
+                                }
+                             </td>
+                        </tr>
+                    }
                 }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <h2 class="text-primary">Ainda não foram feitos novos pedidos para a Cozinha!<i class="fas fa-smile-beam"></i></h2>
+    </div>
+}
 <div class="container p-3">
-    <div class ="w-25 btn-group " role="group" >
+    <div class ="w-20 btn-group " role="group" >
          <div>
              <a asp-controller="Home" asp-action="Index" asp-area="" class="btn btn-primary">
                  <i class="fas fa-home"></i> &nbsp; Home
                  </a>
          </div>&nbsp;
          <div>
-             <a asp-controller="Copa" asp-action="Index" asp-area="" class="btn btn-primary">
-                 <i class="fas fa-wine-bottle "></i> &nbsp; Copa
-             </a>
-        </div>&nbsp;
-         <div>
-             <a asp-controller="Pedido" asp-action="Index" asp-area="" class="btn btn-primary">
+             <a asp-controller="Pedido" asp-action="Index" asp-area="" class="btn btn-danger">
                  <i class="fas fa-list-ul"></i> &nbsp; Pedidos
              </a>
         </div>
