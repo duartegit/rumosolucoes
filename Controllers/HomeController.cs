@@ -3,7 +3,7 @@ using System.Diagnostics;
 using test.Models;
 
 namespace test.Controllers
-{
+{ 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

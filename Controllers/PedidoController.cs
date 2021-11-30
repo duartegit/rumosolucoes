@@ -12,7 +12,7 @@ namespace test.Controllers
         {
             _db = db;
         }
-
+         
         public IActionResult Index()
         {
             IEnumerable<Pedido> objPedidoList = _db.tbl_pedido.ToList();

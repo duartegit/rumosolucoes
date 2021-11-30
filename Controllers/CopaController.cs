@@ -7,7 +7,7 @@ namespace test.Controllers
     public class CopaController : Controller
     {
         private readonly ApplicationDbContext _db;
-
+         
 
         public CopaController(ApplicationDbContext db)
         {

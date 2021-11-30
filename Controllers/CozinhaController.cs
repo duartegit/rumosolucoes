@@ -14,7 +14,7 @@ namespace test.Controllers
         }
 
         public IActionResult Index()
-        {
+        { 
             IEnumerable<Pedido> objPedidoList = _db.tbl_pedido.ToList();
             IEnumerable<Cozinha> personlist = _db.tbl_cozinha.ToList();
             if (personlist.Count() == 0)
